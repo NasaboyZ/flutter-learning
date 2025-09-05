@@ -1,30 +1,18 @@
-import 'package:first_app/stylet_text.dart';
 import 'package:flutter/material.dart';
 
 const startAlignment = Alignment.topLeft;
 const endAlignment = Alignment.bottomRight;
 
-// class GradientContainer extends StatelessWidget {
-//   const GradientContainer({super.key, required this.colors});
-//   final List<Color> colors;
-//   @override
-//   Widget build(context) {
-//     return Container(
-//       decoration: BoxDecoration(
-//         gradient: LinearGradient(
-//           colors: colors,
-//           begin: startAlignment,
-//           end: endAlignment,
-//         ),
-//       ),
-//       child: const Center(child: StyletText('test')),
-//     );
-//   }
-// }
 class GradientContainer extends StatelessWidget {
   const GradientContainer(this.color1, this.color2, {super.key});
   final Color color1;
   final Color color2;
+
+  void rollDice() {
+    //function what Todo
+    print('jello');
+  }
+
   @override
   Widget build(context) {
     return Container(
@@ -35,7 +23,24 @@ class GradientContainer extends StatelessWidget {
           end: endAlignment,
         ),
       ),
-      child: const Center(child: StyletText('test')),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset('assets/images/dice-2.png', width: 200),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: rollDice,
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                textStyle: const TextStyle(fontSize: 28.0),
+                // padding: const EdgeInsets.only(top: 20.0),
+              ),
+              child: const Text('Roll Dice'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
