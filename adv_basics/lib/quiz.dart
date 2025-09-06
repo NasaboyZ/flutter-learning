@@ -19,7 +19,8 @@ class _QuizState extends State<Quiz> {
   //   activeScreen = StartScreen(switchScreen);
   //   super.initState();
   // }
-  var activeScreen = 'start-screen'; // ist die schönere version mit Thinery Operator
+  var activeScreen =
+      'start-screen'; // ist die schönere version mit Thinery Operator
   void switchScreen() {
     setState(() {
       activeScreen = 'questions-screen';
@@ -28,6 +29,10 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(context) {
+    Widget screenWidget = StartScreen(switchScreen);
+    if (activeScreen == 'questions-screen') {
+      screenWidget = const QuestionsScreen();
+    }
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -41,11 +46,7 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          // child: activeScreen,
-          child:
-              activeScreen == 'start-screen'
-                  ? StartScreen(switchScreen)
-                  : const QuestionsScreen(),
+          child: screenWidget,
         ),
       ),
     );
